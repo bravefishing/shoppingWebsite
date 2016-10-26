@@ -1,0 +1,160 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>eMart website</title>
+       <LINK href="Style/style.css" type=text/css rel=stylesheet> 
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    <TABLE cellSpacing=0 cellPadding=0 width=760 align=center border=0 class=page>
+  <TBODY>
+    <TR><td>
+        
+<TABLE width=760 border=0 align=center cellPadding=0 cellSpacing=0 height="60">
+  <TBODY>
+    <TR > 
+      <TD align="center" style="height: 114px">
+		<img src="images/head.png" style="width: 951px" > </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE cellSpacing=0 cellPadding=0 align=center border=0 style="width: 960px">
+  <TBODY>
+    <TR> 
+      <TD height="28"  background=images/t1.gif> 
+		<TABLE class=header width="100%" border=0 cellPadding=0 cellSpacing=0 align="center">
+         
+            <TR> 
+              <TD align="center" style="height: 24px">
+				<p><strong> <a href="Default.aspx">Home</a>
+				|  <a href="UserReg.aspx">Register</a> &nbsp;
+					|  <a href="Login.aspx">Login</a> &nbsp;
+		                 
+				|<font color="#FFFFFF">  <a href="OrderCar.aspx">Cart</a></font> 
+                |<font color="#FFFFFF">  <a href="MyAccount.aspx">MyAccount</a></font> 
+                  |<a>Sell</a> &nbsp;
+				| </strong><a href="Admin/Login.aspx" class="STYLE9"><strong>Adm</strong></a>
+			
+					| <a href="ContactUs.aspx" class="STYLE9"><strong>ContactUs</strong></a>| <a href="out.aspx" class="STYLE9"><strong>SignOut</strong></a>
+				</p>
+				
+				</TD>
+            </TR>
+        
+        </TABLE></TD>
+ 
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE border=0 align=center cellSpacing=0 cellPadding=0 style="width: 960px">
+  <TBODY>
+    <TR> 
+     <TD vAlign=top  width=176>
+         &nbsp;
+         <asp:Label ID="lbUser" runat="server"></asp:Label>&nbsp;Hello! Welcome to eMart!
+         
+         <table border="0" cellpadding="0" cellspacing="0" width="100%">
+             <tr>
+                 <td style="background-color: #009933; height: 30px;" align="center">
+                     Product </td>
+             </tr>
+             <tr>
+                 <td>
+                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                         <tr>
+                             <td style="height: 106px">
+                                 <table align="center" border="0" width="100%">
+                                     <tr>
+                                         <td>
+                                             <table border="0" cellpadding="2" width="100%">
+                                                 <tr>
+                                                     <td align="center">
+                                                         Enter Product name:
+                                                         <asp:TextBox ID="TextBox1" runat="server" ValidationGroup="2"></asp:TextBox>
+                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1"
+                                                             ErrorMessage="can't be empty!" ValidationGroup="2"></asp:RequiredFieldValidator></td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td align="center">
+                                                         &nbsp;<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Search" ValidationGroup="2" BackColor="#009900" /></td>
+                                                 </tr>
+                                             </table>
+                                         </td>
+                                     </tr>
+                                 </table>
+                             </td>
+                         </tr>
+                     </table>
+                 </td>
+             </tr>
+             <tr>
+                 <td style="background-color: #009933; height: 32px;" align="center">
+                     Classification</td>
+             </tr>
+             <tr>
+                 <td align="center">
+                     <asp:DataList ID="dlGoodsType" runat="server" Width="174px">
+                         <ItemTemplate>
+                             <table style="width: 100%">
+                                 <tr>
+                                     <td style="width: 185px">
+                                         <a href='GoodsTypeList.aspx?id=<%#Eval("GoodsTypeID")%>'>
+                                             <%#Eval("GoodsTypeName")%>
+                                         </a>
+                                     </td>
+                                 </tr>
+                             </table>
+                         </ItemTemplate>
+                     </asp:DataList></td>
+             </tr>
+         </table>
+         </TD><td bgcolor="#59be48" width="1"></td>
+      <TD vAlign=top>
+         <div align="center">
+             <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+             </asp:ContentPlaceHolder>
+             &nbsp;</div>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+      <TABLE cellSpacing=0 cellPadding=0 align=center border=0 style="width: 960px">
+  <TBODY>
+    <TR>
+          <TD width="100%" bgColor=#59be48 height=8></TD></TR>
+      <tr>
+          <td align="left" height="20"><asp:DataList ID="DataList1" runat="server" Width="100%" RepeatColumns="8" RepeatDirection="Horizontal">
+              <ItemTemplate>
+                  <table style="width: 100%">
+                      <tr>
+                          <td style="width: 185px">
+                              <a href='<%#Eval("Url")%>' target=_blank>
+                                  <%#Eval("Name")%>
+                              </a>
+                          </td>
+                      </tr>
+                  </table>
+              </ItemTemplate>
+          </asp:DataList></td>
+      </tr>
+    <TR> 
+      <TD height="50" align="center"><p>
+          2W software Company </TD>
+    </TR>
+
+  </TBODY>
+</TABLE>
+    </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+    </div>
+    </form>
+</body>
+</html>
